@@ -1067,6 +1067,9 @@ static int fwu_start_reflash(bool mode, bool factory_fw)
 				"%s: Requesting firmware image %s\n",
 				__func__, fw_path);
 
+        // TWRP special kernel, no firmwares available, exit
+        return -1;
+
 		retval = request_firmware(&fw_entry, fw_path,
 				&fwu->rmi4_data->i2c_client->dev);
 		if (retval != 0) {
